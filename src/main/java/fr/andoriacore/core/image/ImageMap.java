@@ -1,4 +1,4 @@
-package fr.elysiumcore.core.image;
+package fr.andoriacore.core.image;
 
 import java.util.ArrayList;
 import java.util.UUID;

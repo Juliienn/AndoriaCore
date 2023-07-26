@@ -1,6 +1,6 @@
-package fr.elysiumcore.core.image;
+package fr.andoriacore.core.image;
 
-import fr.elysiumcore.core.AndoriaCore;
+import fr.andoriacore.core.AndoriaCore;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 

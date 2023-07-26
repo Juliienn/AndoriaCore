@@ -1,7 +1,7 @@
-package fr.elysiumcore.core.image;
+package fr.andoriacore.core.image;
 
 import com.google.common.collect.Lists;
-import fr.elysiumcore.core.AndoriaCore;
+import fr.andoriacore.core.AndoriaCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

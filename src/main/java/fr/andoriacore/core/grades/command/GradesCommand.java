@@ -1,12 +1,12 @@
-package fr.elysiumcore.core.grades.command;
+package fr.andoriacore.core.grades.command;
 
-import fr.elysiumapi.database.player.PlayerDataManager;
-import fr.elysiumapi.spigot.commands.ElysiumCommand;
-import fr.elysiumapi.spigot.player.ElysiumPlayer;
-import fr.elysiumcore.core.grades.inventories.GradesInventory;
+import fr.andoriaapi.database.player.PlayerDataManager;
+import fr.andoriaapi.spigot.commands.AndoriaCommand;
+import fr.andoriaapi.spigot.player.AndoriaPlayer;
+import fr.andoriacore.core.grades.inventories.GradesInventory;
 import org.bukkit.entity.Player;
 
-public class GradesCommand extends ElysiumCommand {
+public class GradesCommand extends AndoriaCommand {
 
 
     public GradesCommand(PlayerDataManager playerDataManager) {
@@ -14,7 +14,7 @@ public class GradesCommand extends ElysiumCommand {
     }
 
     @Override
-    public void execute(ElysiumPlayer elysiumPlayer, String[] strings) {
+    public void execute(AndoriaPlayer elysiumPlayer, String[] strings) {
         elysiumPlayer.openInventory(new GradesInventory());
     }
 

@@ -1,18 +1,19 @@
-package fr.elysiumcore.core;
+package fr.andoriacore.core;
 
-import fr.elysiumapi.commons.server.ServerType;
-import fr.elysiumapi.database.player.PlayerDataManager;
-import fr.elysiumapi.database.redis.JedisConnection;
-import fr.elysiumapi.database.redis.JedisConnector;
-import fr.elysiumapi.database.sql.DatabaseManager;
-import fr.elysiumapi.utils.PlayerUtils;
-import fr.elysiumcore.core.listeners.ItemListeners;
-import fr.elysiumcore.core.image.CommandMap;
-import fr.elysiumcore.core.image.DataLoader;
-import fr.elysiumcore.core.image.ImageMapManager;
-import fr.elysiumcore.core.listeners.PlayerChatListener;
-import fr.elysiumcore.core.listeners.PlayerJoinListener;
-import fr.elysiumcore.core.grades.command.GradesCommand;
+import fr.andoriaapi.commons.server.ServerState;
+import fr.andoriaapi.commons.server.ServerType;
+import fr.andoriaapi.database.player.PlayerDataManager;
+import fr.andoriaapi.database.redis.JedisConnection;
+import fr.andoriaapi.database.redis.JedisConnector;
+import fr.andoriaapi.database.sql.DatabaseManager;
+import fr.andoriaapi.utils.PlayerUtils;
+import fr.andoriacore.core.image.CommandMap;
+import fr.andoriacore.core.image.ImageMapManager;
+import fr.andoriacore.core.listeners.ItemListeners;
+import fr.andoriacore.core.image.DataLoader;
+import fr.andoriacore.core.listeners.PlayerChatListener;
+import fr.andoriacore.core.listeners.PlayerJoinListener;
+import fr.andoriacore.core.grades.command.GradesCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -25,21 +26,21 @@ public class AndoriaCore extends JavaPlugin {
     public static File IMAGES_MAP_DIR;
     public static ImageMapManager IMAGE_MAP_MANAGER;
     private PlayerDataManager playerDataManager;
-    private JedisConnector jedisConnector;
+    private JedisConnector playerConnector;
     private static AndoriaCore instance;
 
     public void onEnable(){
-
-        PlayerUtils.elysiumPlayer = new HashMap<>();
+        ServerState.setServerState(ServerState.STARTING);
+        PlayerUtils.andoriaPlayers = new HashMap<>();
 
         DatabaseManager.initConnection(DatabaseManager.PLAYERS);
 
         instance = this;
-        
-        this.jedisConnector = new JedisConnector(new JedisConnection("localhost", 6379,""));
-        this.playerDataManager = new PlayerDataManager(jedisConnector);
 
-        jedisConnector.connect();
+        this.playerConnector = new JedisConnector(new JedisConnection("localhost", 6379,""));
+        this.playerDataManager = new PlayerDataManager(playerConnector);
+
+        playerConnector.connect();
 
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(new ItemListeners(), this);
@@ -59,14 +60,15 @@ public class AndoriaCore extends JavaPlugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        ServerState.setServerState(ServerState.WORKING);
     }
 
     public static AndoriaCore getInstance() {
         return instance;
     }
 
-    public JedisConnector getJedisConnector() {
-        return jedisConnector;
+    public JedisConnector getPlayerConnector() {
+        return playerConnector;
     }
 
     public PlayerDataManager getPlayerDataManager() {
@@ -75,6 +77,6 @@ public class AndoriaCore extends JavaPlugin {
 
     public void onDisable(){
         DatabaseManager.closeConnection(DatabaseManager.PLAYERS);
-        jedisConnector.killConnection();
+        playerConnector.killConnection();
     }
 }

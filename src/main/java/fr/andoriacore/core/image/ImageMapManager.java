@@ -1,4 +1,4 @@
-package fr.elysiumcore.core.image;
+package fr.andoriacore.core.image;
 
 import com.google.common.collect.Lists;
 

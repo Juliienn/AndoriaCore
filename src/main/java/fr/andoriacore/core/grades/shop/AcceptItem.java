@@ -1,6 +1,6 @@
-package fr.elysiumcore.core.grades.shop;
+package fr.andoriacore.core.grades.shop;
 
-import fr.elysiumapi.spigot.items.InventoryItem;
+import fr.andoriaapi.spigot.items.InventoryItem;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 

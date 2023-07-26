@@ -1,4 +1,4 @@
-package fr.elysiumcore.core.image;
+package fr.andoriacore.core.image;
 
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;

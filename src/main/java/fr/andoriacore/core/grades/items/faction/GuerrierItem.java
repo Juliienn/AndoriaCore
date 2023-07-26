@@ -1,14 +1,14 @@
-package fr.elysiumcore.core.grades.items.faction;
+package fr.andoriacore.core.grades.items.faction;
 
-import fr.elysiumapi.commons.Symbols;
-import fr.elysiumapi.commons.ranks.ElysiumRanks;
-import fr.elysiumapi.database.player.PlayerData;
-import fr.elysiumapi.spigot.inventories.ElysiumInventory;
-import fr.elysiumapi.spigot.items.InventoryItem;
-import fr.elysiumapi.spigot.player.ElysiumPlayer;
-import fr.elysiumcore.core.AndoriaCore;
-import fr.elysiumcore.core.grades.shop.AcceptItem;
-import fr.elysiumcore.core.grades.shop.DenyItem;
+import fr.andoriaapi.commons.Symbols;
+import fr.andoriaapi.commons.ranks.AndoriaRanks;
+import fr.andoriaapi.database.player.PlayerData;
+import fr.andoriaapi.spigot.inventories.AndoriaInventory;
+import fr.andoriaapi.spigot.items.InventoryItem;
+import fr.andoriaapi.spigot.player.AndoriaPlayer;
+import fr.andoriacore.core.AndoriaCore;
+import fr.andoriacore.core.grades.shop.AcceptItem;
+import fr.andoriacore.core.grades.shop.DenyItem;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -21,7 +21,7 @@ public class GuerrierItem extends InventoryItem {
 
     private final PlayerData playerData;
     public GuerrierItem(PlayerData playerData) {
-        super(new ItemStack(Material.WOOD_SWORD), ElysiumRanks.GUERRIER.getTagId() + ElysiumRanks.GUERRIER.getPrefix(), playerData.getRankInfos().getRank().getPower() >= 1);
+        super(new ItemStack(Material.WOOD_SWORD), AndoriaRanks.GUERRIER.getTagId() + AndoriaRanks.GUERRIER.getPrefix(), playerData.getRankInfos().getRank().getPower() >= 1);
         ArrayList<String> lores = new ArrayList<>();
         lores.add(" ");
         lores.add("§e" + Symbols.STAR + " §7Accés au /kit §3Guerrier ");
@@ -44,22 +44,22 @@ public class GuerrierItem extends InventoryItem {
         inventoryClickEvent.setCancelled(true);
         if(!(inventoryClickEvent.getWhoClicked() instanceof Player)) return;
         if(playerData.getRankInfos().getRank().getPower() <= 1) {
-            ElysiumPlayer elysiumPlayer = ElysiumPlayer.getIElysiumPlayer(inventoryClickEvent.getWhoClicked().getUniqueId());
-            ElysiumInventory elysiumInventory = elysiumPlayer.getOpenedInventory();
-            elysiumInventory.clear();
-            elysiumInventory.setItem(new AcceptItem() {
+            AndoriaPlayer andoriaPlayer = AndoriaPlayer.getAndoriaPlayer(inventoryClickEvent.getWhoClicked().getUniqueId());
+            AndoriaInventory andoriaInventory = andoriaPlayer.getOpenedInventory();
+            andoriaInventory.clear();
+            andoriaInventory.setItem(new AcceptItem() {
                 @Override
                 public void onClick(InventoryClickEvent event) {
                     if (event.getWhoClicked() instanceof Player) {
                         event.setCancelled(true);
                         Player player = (Player) event.getWhoClicked();
-                        if (playerData.getVIP() >= 500) {
-                            playerData.removeVIP(500);
-                            playerData.getRankInfos().setRank(ElysiumRanks.GUERRIER);
+                        if (playerData.getPbs() >= 500) {
+                            playerData.removePbs(500);
+                            playerData.getRankInfos().setRank(AndoriaRanks.GUERRIER);
                             playerData.getRankInfos().setPurchased_at(new Timestamp(System.currentTimeMillis()));
                             playerData.getRankInfos().setExpirationDate(new Timestamp(System.currentTimeMillis() + (long) 30 * 24 * 60 * 60 * 1000));
                             player.closeInventory();
-                            player.sendMessage("§7Vous possédez maintenant le grade: " + ElysiumRanks.GUERRIER.getTagId() + ElysiumRanks.GUERRIER.getPrefix());
+                            player.sendMessage("§7Vous possédez maintenant le grade: " + AndoriaRanks.GUERRIER.getTagId() + AndoriaRanks.GUERRIER.getPrefix());
                         } else {
                             player.closeInventory();
                             player.sendMessage("§cVous n'avez pas assez de points VIP pour acheter ce grade, pour en acheter: /vip");
@@ -69,7 +69,7 @@ public class GuerrierItem extends InventoryItem {
                     }
                 }
             }, 11);
-            elysiumInventory.setItem(new DenyItem(), 15);
+            andoriaInventory.setItem(new DenyItem(), 15);
         }
     }
 }

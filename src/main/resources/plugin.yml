@@ -1,0 +1,9 @@
+main: fr.andoriacore.core.AndoriaCore
+version: 1.0
+name: AndoriaCore
+depend: [AndoriaAPI]
+commands:
+  grades:
+    description: Voir les grades disponibles sur le serveur
+  map:
+    description: Gérer les images sur le serveur

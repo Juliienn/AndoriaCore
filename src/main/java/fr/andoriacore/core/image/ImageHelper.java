@@ -1,4 +1,4 @@
-package fr.elysiumcore.core.image;
+package fr.andoriacore.core.image;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

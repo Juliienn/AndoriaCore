@@ -1,9 +1,9 @@
-package fr.elysiumcore.core.grades.inventories;
+package fr.andoriacore.core.grades.inventories;
 
-import fr.elysiumapi.spigot.inventories.ElysiumInventory;
-import fr.elysiumcore.core.grades.items.faction.FactionItem;
+import fr.andoriaapi.spigot.inventories.AndoriaInventory;
+import fr.andoriacore.core.grades.items.faction.FactionItem;
 
-public class GradesInventory extends ElysiumInventory {
+public class GradesInventory extends AndoriaInventory {
 
     // - ? - - ? - - ? -
 

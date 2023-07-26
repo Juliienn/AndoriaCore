@@ -1,17 +1,17 @@
-package fr.elysiumcore.core.commands;
+package fr.andoriacore.core.commands;
 
-import fr.elysiumapi.database.player.PlayerDataManager;
-import fr.elysiumapi.spigot.commands.ElysiumCommand;
-import fr.elysiumapi.spigot.player.ElysiumPlayer;
+import fr.andoriaapi.database.player.PlayerDataManager;
+import fr.andoriaapi.spigot.commands.AndoriaCommand;
+import fr.andoriaapi.spigot.player.AndoriaPlayer;
 import org.bukkit.entity.Player;
 
-public class HubCommand extends ElysiumCommand {
+public class HubCommand extends AndoriaCommand {
     public HubCommand(PlayerDataManager playerDataManager) {
         super(playerDataManager, 0, "hub");
     }
 
     @Override
-    public void execute(ElysiumPlayer player, String[] args) {
+    public void execute(AndoriaPlayer player, String[] args) {
         player.connect("lobby");
     }
 
