@@ -7,8 +7,8 @@ public class GradesInventory extends AndoriaInventory {
 
     // - ? - - ? - - ? -
 
-    public GradesInventory() {
+    public GradesInventory(boolean clear, int slot1, int slot2, int slot3, int slot4) {
         super("§eGrades", 27);
-        super.setItem(new FactionItem(), 13);
+        super.setItem(new FactionItem(clear, slot1, slot2, slot3, slot4), 13);
     }
 }

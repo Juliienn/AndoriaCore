@@ -16,9 +16,11 @@ import java.util.ArrayList;
 
 public class FactionItem extends InventoryItem {
 
-    private PlayerDataManager playerDataManager;
+    private final PlayerDataManager playerDataManager;
+    private final boolean clear;
+    private final int slot1,slot2,slot3,slot4;
 
-    public FactionItem() {
+    public FactionItem(boolean clear, int slot1, int slot2, int slot3, int slot4) {
         super(new ItemStack(Material.DIAMOND_HELMET), "§eFaction");
         super.addAllItemFlags();
         ArrayList<String> lores = new ArrayList<>();
@@ -26,6 +28,11 @@ public class FactionItem extends InventoryItem {
         lores.add("§e" + Symbols.STARBALL + " §bLa durée des grades est de 1 mois");
         super.setLore(lores);
         this.playerDataManager = AndoriaCore.getInstance().getPlayerDataManager();
+        this.clear = clear;
+        this.slot1 = slot1;
+        this.slot2 = slot2;
+        this.slot3 = slot3;
+        this.slot4 = slot4;
     }
 
     @Override
@@ -35,10 +42,10 @@ public class FactionItem extends InventoryItem {
         AndoriaPlayer andoriaPlayer = AndoriaPlayer.getAndoriaPlayer(event.getWhoClicked().getUniqueId());
         PlayerData playerData = playerDataManager.getPlayerData(andoriaPlayer.getUUID(), andoriaPlayer.getPlayer().getName());
         AndoriaInventory andoriaInventory = andoriaPlayer.getOpenedInventory();
-        andoriaInventory.clear();
-        andoriaInventory.setItem(new GuerrierItem(playerData), 10);
-        andoriaInventory.setItem(new DaimyoItem(playerData), 12);
-        andoriaInventory.setItem(new TaishoItem(playerData), 14);
-        andoriaInventory.setItem(new SamuraiItem(playerData), 16);
+        if(clear)andoriaInventory.clear();
+        andoriaInventory.setItem(new GuerrierItem(playerData), slot1);
+        andoriaInventory.setItem(new DaimyoItem(playerData), slot2);
+        andoriaInventory.setItem(new TaishoItem(playerData), slot3);
+        andoriaInventory.setItem(new SamuraiItem(playerData), slot4);
     }
 }

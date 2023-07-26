@@ -15,7 +15,7 @@ public class GradesCommand extends AndoriaCommand {
 
     @Override
     public void execute(AndoriaPlayer elysiumPlayer, String[] strings) {
-        elysiumPlayer.openInventory(new GradesInventory());
+        elysiumPlayer.openInventory(new GradesInventory(true, 10, 12, 14, 16));
     }
 
     @Override
