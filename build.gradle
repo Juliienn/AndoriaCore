@@ -37,8 +37,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
-    compileOnly 'com.github.Juliienn:AndoriaAPI:1.0.8'
+    compileOnly 'org.spigotmc:spigot-api:1.8-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
+    compileOnly 'com.github.Juliienn:AndoriaAPI:1.0.9'
     api 'redis.clients:jedis:5.0.0-beta1'
 }
 
