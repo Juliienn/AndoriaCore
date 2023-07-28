@@ -7,6 +7,7 @@ import fr.andoriaapi.database.redis.JedisConnection;
 import fr.andoriaapi.database.redis.JedisConnector;
 import fr.andoriaapi.database.sql.DatabaseManager;
 import fr.andoriaapi.utils.PlayerUtils;
+import fr.andoriacore.core.commands.HubCommand;
 import fr.andoriacore.core.image.CommandMap;
 import fr.andoriacore.core.image.ImageMapManager;
 import fr.andoriacore.core.listeners.ItemListeners;
@@ -48,6 +49,7 @@ public class AndoriaCore extends JavaPlugin {
 
         getCommand("grades").setExecutor(new GradesCommand(playerDataManager));
         getCommand("map").setExecutor(new CommandMap(playerDataManager));
+        getCommand("hub").setExecutor(new HubCommand(playerDataManager));
 
         IMAGES_DIR = new File(getDataFolder(), "images");
         IMAGES_MAP_DIR = new File(getDataFolder(), "maps");

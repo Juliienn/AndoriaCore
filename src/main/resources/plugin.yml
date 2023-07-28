@@ -7,3 +7,6 @@ commands:
     description: Voir les grades disponibles sur le serveur
   map:
     description: Gérer les images sur le serveur
+  hub:
+    aliases: [lobby]
+    description: Retourner au lobby

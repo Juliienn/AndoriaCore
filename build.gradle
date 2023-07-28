@@ -24,7 +24,6 @@ repositories {
     maven {
         url = uri('https://hub.spigotmc.org/nexus/content/repositories/snapshots/')
     }
-
     maven {
         url = uri('https://jitpack.io')
     }
@@ -34,11 +33,12 @@ repositories {
     }
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.8-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
-    compileOnly 'com.github.Juliienn:AndoriaAPI:1.0.6'
+    compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
+    compileOnly 'com.github.Juliienn:AndoriaAPI:1.0.8'
     api 'redis.clients:jedis:5.0.0-beta1'
 }
 
