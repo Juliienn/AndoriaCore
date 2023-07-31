@@ -1,5 +1,6 @@
 package fr.andoriacore.core.listeners;
 
+import fr.andoriaapi.utils.PlayerUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -18,5 +19,6 @@ public class PlayerJoinListener implements Listener {
     public void onQuit(PlayerQuitEvent event){
         Player player = event.getPlayer();
         event.setQuitMessage(null);
+        PlayerUtils.andoriaPlayers.remove(player.getUniqueId());
     }
 }
